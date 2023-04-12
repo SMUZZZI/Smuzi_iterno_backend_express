@@ -9,7 +9,6 @@ export const registerValidation = [
 export const blogValidation = [
     body("title").isLength({ min: 3 }),
     body("tag").isLength({ min: 3 }),
-    body("img").isURL(),
     body("text").isLength({ min: 3 }),
     body("mainText").isLength({ min: 10 }),
     body("secondText").isLength({ min: 10 }),
@@ -18,7 +17,6 @@ export const projectValidation = [
     body("projectid").isLength({ min: 3 }),
     body("title").isLength({ min: 3 }),
     body("tag").isLength({ min: 3 }),
-    body("img").isURL(),
     body("client").isLength({ min: 3 }),
     body("category").isLength({ min: 3 }),
     body("tags").isLength({ min: 3 }),

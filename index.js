@@ -9,6 +9,7 @@ import checkAuth from "./utils/checkAuth.js"
 import projectRouter from "./routes/projects.routes.js"
 import blogRouter from "./routes/blog.routes.js"
 import adminRouter from "./routes/admin.routes.js"
+import teamRouter from "./routes/team.routes.js"
 
 const PORT = process.env.PORT ?? 5000
 
@@ -42,6 +43,7 @@ app.use("/uploads", express.static("uploads"))
 
 app.use("/api", projectRouter)    
 app.use("/api", blogRouter)
+app.use("/api", teamRouter)
 app.use("/", adminRouter)
 
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`))

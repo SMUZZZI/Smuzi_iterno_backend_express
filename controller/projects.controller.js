@@ -16,7 +16,7 @@ class ProjectController {
                 img: req.body.img,
                 client: req.body.client,
                 category: req.body.category,
-                tags: req.body.tags,
+                tags: req.body.tags.split(" "),
                 link: req.body.link,
                 mainTitle: req.body.mainTitle,
                 mainText: req.body.mainText,
@@ -30,7 +30,8 @@ class ProjectController {
         catch (error) {
             console.log(error);
             res.status(500).json({
-                message: "Не удалось создать проект"
+                message: "Не удалось создать проект",
+                error,
             })
         }
     }
@@ -43,6 +44,25 @@ class ProjectController {
             console.log(error);
             res.status(500).json({
                 message: "Не удалось найти проект"
+            })
+        }
+    }
+    async getProjectLimit(req, res) {
+        try {
+            let projectid = req.params.projectid
+            let limit = req.params.limit;
+            let page = req.params.page;
+            limit = limit || 8;
+            page = page || 1;
+            let offset = page * limit - limit;
+            
+            const project = await ProjectModel.find({ projectid: projectid }).skip(offset).limit(limit)
+            res.json(project)
+        } 
+        catch (error) {
+            console.log(error);
+            res.status(500).json({
+                message: "Не удалось найти проекты"
             })
         }
     }

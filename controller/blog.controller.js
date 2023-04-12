@@ -13,10 +13,10 @@ class BlogController {
 
             const doc = new BlogModel({
                 title: req.body.title,
-                tag: req.body.tag,
+                tag: req.body.tag.split(" "),
                 img: req.body.img,
                 text: req.body.text,
-                list: req.body.list,
+                list: req.body.list.split(" "), 
                 mainText: req.body.mainText,
                 secondText: req.body.secondText,
             })
