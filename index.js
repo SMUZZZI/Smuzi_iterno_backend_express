@@ -11,7 +11,7 @@ import blogRouter from "./routes/blog.routes.js"
 import adminRouter from "./routes/admin.routes.js"
 import teamRouter from "./routes/team.routes.js"
 
-const PORT = process.env.PORT ?? 5000
+const PORT = process.env.PORT || 5000
 
 mongoose.connect("mongodb+srv://smuzzzzzzi:qM-tar2-G2khApY@internotest.z2falak.mongodb.net/app?retryWrites=true&w=majority")
         .then(() => console.log("DB ok"))
